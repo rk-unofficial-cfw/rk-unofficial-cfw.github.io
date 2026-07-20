@@ -1,0 +1,17 @@
+{{ define "main" }}
+<main class="docs-layout">
+  {{ partial "docs-sidebar.html" . }}
+  <div class="docs-main">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><span class="breadcrumb-sep" aria-hidden="true">›</span><a href="/docs/">Docs</a></li>
+        <li class="breadcrumb-item"><span class="breadcrumb-sep" aria-hidden="true">›</span><span class="breadcrumb-current">{{ .Params.short_title | default .Title }}</span></li>
+      </ol>
+    </nav>
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</main>
+{{ end }}

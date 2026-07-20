@@ -1,0 +1,147 @@
+{{ define "main" }}
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">&#9632; Open Source Firmware</span>
+        <h1 class="hero-title">
+          Custom firmware for<br>
+          <span class="hero-title-accent">Rockchip</span> devices
+        </h1>
+        <p class="hero-subtitle">
+          Community-driven firmware for RK3xxx SoCs. Better performance,
+          mainline kernel support, and full hardware documentation.
+        </p>
+        <div class="hero-actions">
+          <a href="/docs/getting-started.html" class="btn btn-primary">Get Started</a>
+          <a href="/docs/" class="btn btn-secondary">Documentation</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value">1</span>
+            <span class="hero-stat-label">Supported SoC</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">OSS</span>
+            <span class="hero-stat-label">License</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value">Active</span>
+            <span class="hero-stat-label">Development</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="chip-diagram">
+          <div class="chip-pins chip-pins--top">
+            <span class="chip-pin"></span><span class="chip-pin"></span>
+            <span class="chip-pin"></span><span class="chip-pin"></span>
+          </div>
+          <div class="chip-pins chip-pins--bottom">
+            <span class="chip-pin"></span><span class="chip-pin"></span>
+            <span class="chip-pin"></span><span class="chip-pin"></span>
+          </div>
+          <div class="chip-pins chip-pins--left">
+            <span class="chip-pin"></span><span class="chip-pin"></span><span class="chip-pin"></span>
+          </div>
+          <div class="chip-pins chip-pins--right">
+            <span class="chip-pin"></span><span class="chip-pin"></span><span class="chip-pin"></span>
+          </div>
+          <div class="chip-package">
+            <div class="chip-die">RK3xxx</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soc-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Supported SoCs</h2>
+          <p class="section-subtitle">Select your chip to find compatible firmware and documentation.</p>
+        </div>
+        <a href="/docs/" class="section-link">Full compatibility table &rarr;</a>
+      </div>
+      <div class="soc-grid">
+        <article class="soc-card soc-card--entry">
+          <a href="/docs/soc/rk3228.html" class="soc-card-link" aria-label="RK3228 details"></a>
+          <div class="soc-card-header">
+            <span class="soc-name">RK3228</span>
+            <span class="soc-badge soc-badge--entry">Entry</span>
+          </div>
+          <ul class="soc-specs">
+            <li class="soc-spec"><span class="soc-spec-label">CPU</span><span class="soc-spec-value">4-core Cortex-A7 &bull; 1.2 GHz</span></li>
+            <li class="soc-spec"><span class="soc-spec-label">GPU</span><span class="soc-spec-value">Mali-400 MP2</span></li>
+            <li class="soc-spec"><span class="soc-spec-label">Use</span><span class="soc-spec-value">Low-cost media boxes</span></li>
+            <li class="soc-spec"><span class="soc-spec-label">Video</span><span class="soc-spec-value">1080p H.265 decode</span></li>
+          </ul>
+          <div class="soc-status">
+            <span class="soc-status-dot soc-status-dot--active"></span>
+            Supported
+          </div>
+          <div class="fw-list" aria-label="Available firmware">
+            <span class="fw-pill fw-pill--libreelec">LibreELEC</span>
+          </div>
+          <span class="soc-card-cta">View details &rsaquo;</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <h2 class="section-title">Why RK-CFW?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#9670;</div>
+          <h3 class="feature-title">Mainline Kernel</h3>
+          <p class="feature-desc">Upstream Linux kernel support instead of vendor BSP forks. Long-term security patches and modern driver infrastructure.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#9632;</div>
+          <h3 class="feature-title">Open Source</h3>
+          <p class="feature-desc">Every change is transparent and auditable. No proprietary blobs where avoidable. Community contributions welcome.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#9650;</div>
+          <h3 class="feature-title">Better Performance</h3>
+          <p class="feature-desc">Tuned governors, thermal profiles, and memory timings for real workloads instead of conservative factory defaults.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#9679;</div>
+          <h3 class="feature-title">Full Documentation</h3>
+          <p class="feature-desc">Detailed hardware documentation, flash guides, and per-SoC peripheral maps contributed by the community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="latest-posts-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Latest from the Blog</h2>
+        <a href="/blog/" class="section-link">All posts &rarr;</a>
+      </div>
+      <div class="posts-grid">
+        {{ range first 1 (where .Site.RegularPages "Section" "blog") }}
+        <article class="post-card">
+          <div class="post-card-meta">
+            <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            {{ range .Params.tags }}<span class="post-tag">{{ . }}</span>{{ end }}
+          </div>
+          <h3 class="post-title">
+            <a href="{{ .RelPermalink }}">{{ .Params.short_title | default .Title }}</a>
+          </h3>
+          <p class="post-excerpt">{{ .Description }}</p>
+          <a href="{{ .RelPermalink }}" class="post-read-more">Read more &rarr;</a>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+</main>
+{{ end }}

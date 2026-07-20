@@ -1,0 +1,29 @@
+{{ define "main" }}
+<main>
+  <div class="container">
+    <div class="page-header">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><span class="breadcrumb-sep" aria-hidden="true">›</span><span class="breadcrumb-current">Blog</span></li>
+      </ol>
+      <h1 class="page-title">Blog</h1>
+      <p class="page-subtitle">Project news, release announcements, hardware guides, and community updates.</p>
+    </div>
+    <div class="posts-grid">
+      {{ range .Pages }}
+      <article class="post-card">
+        <div class="post-card-meta">
+          <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          {{ range .Params.tags }}<span class="post-tag">{{ . }}</span>{{ end }}
+        </div>
+        <h2 class="post-title">
+          <a href="{{ .RelPermalink }}">{{ .Params.short_title | default .Title }}</a>
+        </h2>
+        <p class="post-excerpt">{{ .Description }}</p>
+        <a href="{{ .RelPermalink }}" class="post-read-more">Read more &rarr;</a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}
