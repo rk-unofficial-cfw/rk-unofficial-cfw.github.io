@@ -1,10 +1,10 @@
-title = "RK-CFW"
+title = "Unofficial Rockchip Custom Firmware"
 baseURL = "https://rk-unofficial-cfw.github.io/"
 languageCode = "en-us"
 uglyURLs = true
 
 [params]
-  description = "Unofficial community firmware for Rockchip SoC devices."
+  description = "Unofficial firmware for Rockchip SoC devices."
 
 [markup.goldmark.renderer]
   unsafe = true
